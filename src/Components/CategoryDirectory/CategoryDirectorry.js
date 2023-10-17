@@ -1,3 +1,4 @@
+
 import React from "react";
 import "./categories.styles.scss";
 import CategoryItemComponent from "../CategoryItem/CategoryItemComponent"
@@ -23,12 +24,12 @@ const categories = [
   },
   {
     id: 4,
-    name: "womens",
+    name: "Womens",
     imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
   },
   {
     id: 5,
-    name: "mens",
+    name: "Mens",
     imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
   },
 ];
