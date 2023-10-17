@@ -13,7 +13,7 @@ import SignIn from "./Routes/SignIn/SignIn";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <NavBar />,
+    element: <NavBar />, 
     children: [
       {
         index: true,
