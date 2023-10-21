@@ -1,9 +1,14 @@
 import { useState } from "react";
 
+import FormInput from "../FormInput/FormInput";
+import ButtonComponent from "../ButtonComponent/ButtonComponent";
+
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
+
+import './SignUpForm.scss'
 
 const defaultFormFields = {
   displayName: "",
@@ -18,14 +23,8 @@ const SignUpForm = () => {
 
   console.log(formFields, "fORM FIelds");
 
-  const resetFormFields =()=>{
-    setFormFields(defaultFormFields)
-  }
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setFormFields({ ...formFields, [name]: value });
+  const resetFormFields = () => {
+    setFormFields(defaultFormFields);
   };
 
   const handleSubmit = async (event) => {
@@ -45,55 +44,76 @@ const SignUpForm = () => {
       console.log("Authenticated!");
       console.log(user, "user info");
 
-      const userDocRef = await createUserDocumentFromAuth(user, {displayName});
+      const userDocRef = await createUserDocumentFromAuth(user, {
+        displayName,
+      });
       console.log(userDocRef, "On Database!");
       resetFormFields();
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         alert("Email Already in Use");
-      }else{
-      console.log("Error during creation", error.message);
+      } else {
+        console.log("Error during creation", error.message);
       }
     }
   };
 
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormFields({ ...formFields, [name]: value });
+  };
+
+  const formFieldsInput = [
+    {
+      label: "Display Name",
+      type: "text",
+      name: "displayName",
+      value: displayName,
+      required: true,
+    },
+    {
+      label: "Email",
+      type: "email",
+      name: "email",
+      value: email,
+      required: true,
+    },
+    {
+      label: "Password",
+      type: "password",
+      name: "password",
+      value: password,
+      required: true,
+    },
+    {
+      label: "Confirm Password",
+      type: "password",
+      name: "confirmPassword",
+      value: confirmPassword,
+      required: true,
+    },
+  ];
+
   return (
-    <div>
-      <h1>Sign in With Email & Password</h1>
+    <div className="sign-up-container">
+      <h2>Dont Have an account?</h2>
+      <span>Sign in With Email & Password</span>
       <form onSubmit={handleSubmit}>
-        <label>Display Name</label>
-        <input
-          type="text"
-          required
-          onChange={handleChange}
-          name="displayName"
-          value={displayName}
-        />
-        <label>Email</label>
-        <input
-          type="email"
-          required
-          onChange={handleChange}
-          name="email"
-          value={email}
-        />
-        <label>Password</label>
-        <input
-          type="password"
-          required
-          onChange={handleChange}
-          name="password"
-          value={password}
-        />
-        <label>Confirm Password</label>
-        <input
-          type="password"
-          required
-          onChange={handleChange}
-          name="confirmPassword"
-          value={confirmPassword}
-        />
-        <button type="submit"> Sign Up</button>
+        {formFieldsInput.map((field, index) => {
+          return (
+            <FormInput
+              key={index}
+              label={field.label}
+              type={field.type}
+              required={field.required}
+              onChange={handleChange}
+              name={field.name}
+              value={field.value}
+            />
+          );
+        })}
+        <ButtonComponent type="submit"> Sign Up</ButtonComponent>
       </form>
     </div>
   );

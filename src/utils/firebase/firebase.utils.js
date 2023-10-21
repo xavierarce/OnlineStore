@@ -72,10 +72,3 @@ export const createAuthUserWithEmailAndPassword = async (email,password) => {
 
   return createUserWithEmailAndPassword(auth, email, password);
 };
-
-
-const {sd}={
-  name:null,
-  age:20,
-  sax:'211',
-}
