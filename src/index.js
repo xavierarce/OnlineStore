@@ -8,7 +8,7 @@ import reportWebVitals from "./reportWebVitals";
 import NavBar from "./Routes/NavBar/NavBar";
 import Home from "./Routes/Home/Home";
 import Shop from "./Routes/Shop/Shop";
-import SignIn from "./Routes/SignIn/SignIn";
+import Authentication from "./Routes/Authentication/Authentication";
 
 const router = createBrowserRouter([
   {
@@ -24,8 +24,8 @@ const router = createBrowserRouter([
         element: <Shop />,
       },
       {
-        path: "signin",
-        element: <SignIn />,
+        path: "auth",
+        element: <Authentication />,
       },
     ],
   },

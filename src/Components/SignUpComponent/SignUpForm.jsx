@@ -8,7 +8,7 @@ import {
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 
-import './SignUpForm.scss'
+import "./SignUpForm.scss";
 
 const defaultFormFields = {
   displayName: "",
@@ -98,7 +98,7 @@ const SignUpForm = () => {
   return (
     <div className="sign-up-container">
       <h2>Dont Have an account?</h2>
-      <span>Sign in With Email & Password</span>
+      <span>Sign up With Email & Password</span>
       <form onSubmit={handleSubmit}>
         {formFieldsInput.map((field, index) => {
           return (
