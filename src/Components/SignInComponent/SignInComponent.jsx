@@ -2,7 +2,10 @@ import FormInput from "../FormInput/FormInput";
 import ButtonComponent from "../ButtonComponent/ButtonComponent";
 
 import "./SignInComponent.scss";
-import { useState } from "react";
+import { useState , useContext} from "react";
+
+import { UserContext } from "../../contexts/User.context";
+
 
 import {
   signInWithGooglePopup,
@@ -15,9 +18,12 @@ const defaultFormFields = {
   password: "",
 };
 
+
 const SignInComponent = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
+
+  const {setCurrectUser} = useContext(UserContext);
 
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
@@ -33,8 +39,8 @@ const SignInComponent = () => {
     event.preventDefault();
 
     try {
-      const user = await singInEmailandPassword(email, password)
-      console.log(user);
+      const {user} = await singInEmailandPassword(email, password)
+      setCurrectUser(user)
       resetFormFields();
     } catch (error) {
       if(error.code === 'auth/invalid-login-credentials'){

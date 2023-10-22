@@ -2,7 +2,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.scss";
 import reportWebVitals from "./reportWebVitals";
 
 import NavBar from "./Routes/NavBar/NavBar";
@@ -10,10 +9,13 @@ import Home from "./Routes/Home/Home";
 import Shop from "./Routes/Shop/Shop";
 import Authentication from "./Routes/Authentication/Authentication";
 
+import "./index.scss";
+import { UserProvider } from "./contexts/User.context";
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <NavBar />, 
+    element: <NavBar />,
     children: [
       {
         index: true,
@@ -34,7 +36,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
   </React.StrictMode>
 );
 
