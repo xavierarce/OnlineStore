@@ -23,7 +23,7 @@ const SignInComponent = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
-  const {setCurrectUser} = useContext(UserContext);
+  const {setCurrentUser} = useContext(UserContext);
 
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
@@ -40,7 +40,7 @@ const SignInComponent = () => {
 
     try {
       const {user} = await singInEmailandPassword(email, password)
-      setCurrectUser(user)
+      setCurrentUser(user)
       resetFormFields();
     } catch (error) {
       if(error.code === 'auth/invalid-login-credentials'){
