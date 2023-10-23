@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 
 import NavBar from "./Routes/NavBar/NavBar";
 import Home from "./Routes/Home/Home";
-import Shop from "./Routes/Shop/Shop";
+import Shop from "./Routes/Shop/ShopComponent";
 import Authentication from "./Routes/Authentication/Authentication";
 
 import "./index.scss";
