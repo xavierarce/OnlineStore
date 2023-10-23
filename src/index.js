@@ -10,7 +10,9 @@ import Shop from "./Routes/Shop/ShopComponent";
 import Authentication from "./Routes/Authentication/Authentication";
 
 import "./index.scss";
+
 import { UserProvider } from "./contexts/User.context";
+import { ProductsProvider } from "./contexts/Products.context";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +39,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <UserProvider>
-      <RouterProvider router={router} />
+      <ProductsProvider>
+        <RouterProvider router={router} />
+      </ProductsProvider>
     </UserProvider>
   </React.StrictMode>
 );

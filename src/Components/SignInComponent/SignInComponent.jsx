@@ -8,7 +8,6 @@ import { useState } from "react";
 import {
   signInWithGooglePopup,
   singInEmailandPassword,
-  createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 
 const defaultFormFields = {
@@ -33,7 +32,7 @@ const SignInComponent = () => {
     event.preventDefault();
 
     try {
-      const { user } = await singInEmailandPassword(email, password);
+      await singInEmailandPassword(email, password);
       resetFormFields();
     } catch (error) {
       if (error.code === "auth/invalid-login-credentials") {

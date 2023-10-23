@@ -5,9 +5,12 @@ import {
 } from "../utils/firebase/firebase.utils";
 
 //actual value you want to access
+
+//export const UserContext = createContext();
+
 export const UserContext = createContext({
   currentUser: null,
-  setCurrectUser: () => null,
+  setCurrentUser: () => null,
 });
 
 
