@@ -10,6 +10,7 @@ export const UserContext = createContext({
   setCurrectUser: () => null,
 });
 
+
 // Provider
 export const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -20,7 +21,8 @@ export const UserProvider = ({ children }) => {
       if (user) {
         createUserDocumentFromAuth(user);
       }
-      console.log(user);
+      console.log('UNSCIRS',user);
+      console.log('onAuthStateChangedListener',onAuthStateChangedListener);
       setCurrentUser(user);
     });
     return unsubscribe;
