@@ -9,14 +9,7 @@ import { singOutUser } from "../../utils/firebase/firebase.utils";
 import "./NavBar.scss";
 
 const NavBar = () => {
-  const { currentUser, setCurrentUser } = useContext(UserContext);
-  console.log(currentUser, "NavBar");
-
-  const singOutHandler =async()=>{
-    await singOutUser();
-    setCurrentUser(null)
-  }
-
+  const { currentUser,  } = useContext(UserContext);
 
   return (
     <Fragment>
@@ -29,7 +22,7 @@ const NavBar = () => {
             SHOP
           </Link>
           {currentUser ? (
-            <span className="NavLink" onClick={singOutHandler}>SING OUT</span>
+            <span className="NavLink" onClick={singOutUser}>SING OUT</span>
           ) : (
             <Link className="NavLink" to="/auth">
               SIGN IN

@@ -2,9 +2,7 @@ import FormInput from "../FormInput/FormInput";
 import ButtonComponent from "../ButtonComponent/ButtonComponent";
 
 import "./SignInComponent.scss";
-import { useState , useContext} from "react";
-
-import { UserContext } from "../../contexts/User.context";
+import { useState } from "react";
 
 
 import {
@@ -23,12 +21,8 @@ const SignInComponent = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
-  const {setCurrentUser} = useContext(UserContext);
-
   const logGoogleUser = async () => {
-    const { user } = await signInWithGooglePopup();
-    console.log(user + "Log ggog");
-    await createUserDocumentFromAuth(user);
+  await signInWithGooglePopup();
   };
 
   const resetFormFields = () => {
@@ -39,18 +33,16 @@ const SignInComponent = () => {
     event.preventDefault();
 
     try {
-      const {user} = await singInEmailandPassword(email, password)
-      setCurrentUser(user)
+      const { user } = await singInEmailandPassword(email, password);
       resetFormFields();
     } catch (error) {
-      if(error.code === 'auth/invalid-login-credentials'){
-        alert('Invalid Credentials')
-      }else{
+      if (error.code === "auth/invalid-login-credentials") {
+        alert("Invalid Credentials");
+      } else {
         console.log(error);
       }
     }
   };
-
 
   const onHandleChange = (event) => {
     const { name, value } = event.target;
