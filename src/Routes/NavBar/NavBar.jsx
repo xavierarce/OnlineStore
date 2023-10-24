@@ -11,9 +11,11 @@ import { UserContext } from "../../contexts/User.context";
 import { singOutUser } from "../../utils/firebase/firebase.utils";
 
 import "./NavBar.scss";
+import { CartContext } from "../../contexts/Cart.context";
 
 const NavBar = () => {
   const { currentUser } = useContext(UserContext);
+  const {isCartOpen} = useContext(CartContext);
 
   return (
     <Fragment>
@@ -36,7 +38,7 @@ const NavBar = () => {
           )}
           <CartIcon />
         </div>
-        <Cartdropdown />
+        {isCartOpen && <Cartdropdown />}
       </div>
       <Outlet />
     </Fragment>

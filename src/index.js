@@ -13,6 +13,7 @@ import "./index.scss";
 
 import { UserProvider } from "./contexts/User.context";
 import { ProductsProvider } from "./contexts/Products.context";
+import { CartProvider } from "./contexts/Cart.context";
 
 const router = createBrowserRouter([
   {
@@ -40,7 +41,9 @@ root.render(
   <React.StrictMode>
     <UserProvider>
       <ProductsProvider>
-        <RouterProvider router={router} />
+        <CartProvider>
+          <RouterProvider router={router} />
+        </CartProvider>
       </ProductsProvider>
     </UserProvider>
   </React.StrictMode>
