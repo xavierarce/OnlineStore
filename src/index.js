@@ -8,6 +8,7 @@ import NavBar from "./Routes/NavBar/NavBar";
 import Home from "./Routes/Home/Home";
 import Shop from "./Routes/Shop/ShopComponent";
 import Authentication from "./Routes/Authentication/Authentication";
+import CheckOut from "./Routes/CheckOut/CheckOut";
 
 import "./index.scss";
 
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "auth",
         element: <Authentication />,
+      },
+      {
+        path: "checkout",
+        element: <CheckOut />,
       },
     ],
   },
