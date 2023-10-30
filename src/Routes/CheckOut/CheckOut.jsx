@@ -7,38 +7,37 @@ import { CartContext } from "../../contexts/Cart.context";
 import CheckOutItem from "../../Components/CheckOutItem/CheckOutItem";
 
 const CheckOut = () => {
-  const { cartItems, setCartItems } = useContext(CartContext);
+  const { cartItems, setCartItems , totalCartValue} = useContext(CartContext);
 
-  const totalValue = cartItems.reduce((acc, object) => {
-    return acc + object.price;
-  }, 0);
 
   console.log(cartItems, "checkout");
   return (
-    <div>
-      <div className="checkout-titles">
-        <div className="checkout-title">
-          <h2>Product</h2>
+    <div className="checkout-container">
+      <div className="checkout-header">
+        <div className="header-block">
+          <span>Product</span>
         </div>
-        <div className="checkout-title">
-          <h2>Description</h2>
+        <div className="header-block">
+          <span>Description</span>
         </div>
-        <div className="checkout-title">
-          <h2>Quantity</h2>
+        <div className="header-block">
+          <span>Quantity</span>
         </div>
-        <div className="checkout-title">
-          <h2>Price</h2>
+        <div className="header-block">
+          <span>Price</span>
         </div>
-        <div className="checkout-title">
-          <h2>Remove</h2>
+        <div className="header-block">
+          <span>Remove</span>
         </div>
       </div>
-      <div className="eachcartItem">
-        {cartItems.map((cartItem) => (
+      {cartItems.length > 0 ? (
+        cartItems.map((cartItem) => (
           <CheckOutItem product={cartItem} setCartItems={setCartItems} />
-        ))}
-      </div>
-      <h3>Total = ${totalValue} </h3>
+        ))
+      ) : (
+        <h2 className="emptyCard">Your Cart Is Empty</h2>
+      )}
+      <div className="total">Total = ${totalCartValue} </div>
     </div>
   );
 };
