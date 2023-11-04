@@ -24,8 +24,6 @@ export const UserProvider = ({ children }) => {
       if (user) {
         createUserDocumentFromAuth(user);
       }
-      console.log('UNSCIRS',user);
-      console.log('onAuthStateChangedListener',onAuthStateChangedListener);
       setCurrentUser(user);
     });
     return unsubscribe;

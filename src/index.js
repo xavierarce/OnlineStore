@@ -13,8 +13,8 @@ import CheckOut from "./Routes/CheckOut/CheckOut";
 import "./index.scss";
 
 import { UserProvider } from "./contexts/User.context";
-import { ProductsProvider } from "./contexts/Products.context";
 import { CartProvider } from "./contexts/Cart.context";
+import { CategoriesProvider } from "./contexts/Categories.context";
 
 const router = createBrowserRouter([
   {
@@ -45,11 +45,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <UserProvider>
-      <ProductsProvider>
+      <CategoriesProvider>
         <CartProvider>
           <RouterProvider router={router} />
         </CartProvider>
-      </ProductsProvider>
+      </CategoriesProvider>
     </UserProvider>
   </React.StrictMode>
 );
