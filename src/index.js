@@ -7,6 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import NavBar from "./Routes/NavBar/NavBar";
 import Home from "./Routes/Home/Home";
 import Shop from "./Routes/Shop/ShopComponent";
+// import CategoriesPreview from "./Routes/CategoriesPreview/CategoriesPreview.Component";
 import Authentication from "./Routes/Authentication/Authentication";
 import CheckOut from "./Routes/CheckOut/CheckOut";
 
@@ -26,8 +27,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "shop",
-        element: <Shop />,
+        path: "shop/*",
+        element: <Shop/>,
       },
       {
         path: "auth",
