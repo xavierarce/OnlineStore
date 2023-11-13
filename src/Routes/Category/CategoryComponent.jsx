@@ -17,8 +17,7 @@ const CategoryComponent = () => {
   console.log(categoriesMap);
   return (
     <div>
-      <h2>{category.charAt(0).toUpperCase() + category.slice(1)}</h2>
-
+      <h2 className="category-title">{category}</h2>
       <div className="category-display">
         {products &&
           products.map((product) => (

@@ -1,5 +1,5 @@
 import FormInput from "../FormInput/FormInput";
-import ButtonComponent from "../ButtonComponent/ButtonComponent";
+import ButtonComponent, {ButtonTypesClasses} from "../ButtonComponent/ButtonComponent";
 
 import "./SignInComponent.scss";
 import { useState } from "react";
@@ -74,7 +74,7 @@ const SignInComponent = () => {
           <ButtonComponent type="submit">Sign In</ButtonComponent>
           <ButtonComponent
             onClick={logGoogleUser}
-            buttonType="google"
+            buttonType={ButtonTypesClasses.google}
             type="button"
           >
             Google Sign In

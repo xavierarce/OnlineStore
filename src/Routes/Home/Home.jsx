@@ -1,4 +1,4 @@
-import Categories from '../../Components/CategoryDirectory/CategoryDirectorry'
+import Categories from '../../Components/CategoryDirectory/CategoryDirectory'
 
 const Home =()=>{
 return(

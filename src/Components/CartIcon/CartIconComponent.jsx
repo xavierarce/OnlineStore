@@ -1,6 +1,5 @@
 import { useContext } from "react";
-import { ReactComponent as ShoppingIcon } from "../../assets/shopping-bag.svg";
-import "./CartIcon.scss";
+import { ShoppingIcon, CartIconContainer, ItemCount } from "./CartIcon.styles.jsx";
 import { CartContext } from "../../contexts/Cart.context";
 
 const CartIcon = () => {
@@ -13,10 +12,10 @@ const CartIcon = () => {
   // const totalCartItems = cartItems.reduce((acc, cv) => acc + cv.quantity, 0);
 
   return (
-    <div onClick={onCartClick} className="cart-icon-container">
+    <CartIconContainer onClick={onCartClick}>
       <ShoppingIcon className="shopping-icon" />
-      <span className="item-count">{cartCount}</span>
-    </div>
+      <ItemCount className="item-count">{cartCount}</ItemCount>
+    </CartIconContainer>
   );
 };
 

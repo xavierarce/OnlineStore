@@ -2,7 +2,7 @@ import { useContext } from "react";
 
 import ButtonComponent from "../ButtonComponent/ButtonComponent";
 
-import "./Cartdropdown.scss";
+import { CartDropdownContainer , EmptyMessage, CartItems} from "./Cartdropdown.jsx";
 
 import { CartContext } from "../../contexts/Cart.context";
 import CartItemComponent from "../CartItem/CartItemComponent";
@@ -17,22 +17,22 @@ const Cartdropdown = () => {
   }
 
   return (
-    <div className="cart-dropdown-container">
-      <div className="cart-items">
+    <CartDropdownContainer>
+      <CartItems>
         {
-          cartItems.length>0 ? (
+          cartItems.length? (
             cartItems.map((item, i) => (
           <CartItemComponent key={i} cartItem={item}/>
         ))
         ):(
-          <span className="empty-message ">Your cart is empty</span>
+          <EmptyMessage>Your cart is empty</EmptyMessage>
         )
           
         }
         
-      </div>
+      </CartItems>
       <ButtonComponent onClick={goToCheckOut}>Go to CheckOut</ButtonComponent>
-    </div>
+    </CartDropdownContainer>
   );
 };
 
